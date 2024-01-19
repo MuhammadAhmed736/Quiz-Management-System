@@ -15,14 +15,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.List;
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import javax.swing.*;
+
 import model.Admin;
 import model.Student;
 import util.InputValidator;
@@ -53,7 +47,7 @@ public class LoginPanel  extends JPanel {
     public LoginPanel(MainFrame mainFrame) {
         this.mainFrame = mainFrame;
         mainFrame.getContentPane().removeAll();
-        backgroundImage = new ImageIcon("C:\\Users\\askha\\Videos\\the 4400\\laptop.jpg").getImage();
+        backgroundImage = new ImageIcon("Images/laptop.jpg").getImage();
         mainFrame.setContentPane(this);
       // backgroundImage=null;
        revalidate();
@@ -148,7 +142,7 @@ public class LoginPanel  extends JPanel {
                       backgroundImage = null;
                      revalidate();
                      repaint();
-                      backgroundImage = new ImageIcon("C:\\Users\\askha\\Videos\\the 4400\\student panel.jpg").getImage();
+                      backgroundImage = new ImageIcon("Images/student panel.jpg").getImage();
  
                       repaint();
                       new StudentPanel(mainFrame);
@@ -172,7 +166,7 @@ public class LoginPanel  extends JPanel {
                       backgroundImage = null;
                      revalidate();
                      repaint();
-                      backgroundImage = new ImageIcon("C:\\Users\\askha\\Videos\\the 4400\\admin bg.jpg").getImage();
+                      backgroundImage = new ImageIcon("Images/admin bg.jpg").getImage();
  
                       repaint();
                         new AdminPanel(mainFrame);
