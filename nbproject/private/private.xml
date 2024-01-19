@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/util/InputValidator.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/model/Student.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/util/SessionManager.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/dao/StudentDAO.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/quizmanagementsystem/QuizManagementSystem.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/model/Admin.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/dao/CourseDAO.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/dao/QuestionDAO.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/gui/LoginPanel.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/gui/QuizPanel.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/model/Course.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/model/Question.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/dao/DatabaseConnection.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/gui/SignUpPanel.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/dao/AdminDAO.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/gui/StudentPanel.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/gui/QuizListPanel.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/gui/MainFrame.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/gui/AdminPanel.java</file>
+            <file>file:/C:/Users/askha/Desktop/Semester%205/MPL/Labs/Assignment%202/QuizManagementSystem/src/model/Quiz.java</file>
+        </group>
+    </open-files>
+</project-private>
