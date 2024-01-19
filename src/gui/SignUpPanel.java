@@ -25,7 +25,7 @@ public class SignUpPanel extends JPanel {
     private JLabel label4;
     private JLabel label5;
     private JLabel label6;
-    Image img;
+    
     private ButtonGroup roles;
     private JRadioButton student;
     private JRadioButton admin;
@@ -142,13 +142,9 @@ public class SignUpPanel extends JPanel {
                         stddao.saveStudent(s);
                        
                          mainFrame.getContentPane().removeAll();
-                      
-                    
-                     revalidate();
+
                      repaint();
-                     
- 
-                      repaint();
+
                         new LoginPanel(mainFrame);
                     }
                     else  if(selectedrole.equals("admin"))

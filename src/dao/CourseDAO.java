@@ -37,7 +37,7 @@ public class CourseDAO {
         }
     }
     public void deleteCourse(Course course) {
-       /* 
+       
         try (Connection connection = DatabaseConnection.getConnection()) {
             connection.setAutoCommit(false); // Set auto-commit to false to manage transactions
 
@@ -66,7 +66,7 @@ public class CourseDAO {
                 rollbackException.printStackTrace();
             }
         }
-        */
+        
     }
     public List<Course>  getCourses()
     {

@@ -13,10 +13,38 @@ import model.Quiz;
 public class QuizDAO {
    
     
-    public void addQuiz()
+    public boolean addQuiz(Quiz q,String courseId)
     {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            // Insert the Quiz record into the Course table only if Quiz doesn't exist
+            String insertQuery = "INSERT INTO Quiz (QuizId, QuizTitle, NumberOfQuestions, QuizDuration, CourseID) " +
+                                 "SELECT ?, ?, ?, ?, ? " +
+                                 "WHERE NOT EXISTS (SELECT 1 FROM Quiz WHERE QuizId = ?)";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
+                preparedStatement.setInt(1, q.getQuizId());
+                preparedStatement.setString(2,q.getTitle() );
+                preparedStatement.setInt(3, q.getNumberofQuestions());
+                preparedStatement.setInt(4,q.getTimeDuration() );
+                preparedStatement.setString(5,courseId );
+                preparedStatement.setInt(6, q.getQuizId());
+                int rowsAffected =  preparedStatement.executeUpdate();   
+                if (rowsAffected > 0) {
+                    System.out.println(" row Affected");
+                    return true;
+                } else {
+                    System.out.println("no row");
+                   return false;
+                }
+            } 
+            
+        } catch (SQLException e) {
+            // Handle or log the exception appropriately
+            e.printStackTrace();
+            return false;
+        }
         
     }
+    
     public List<Quiz> getQuizzes(String selectedCourseId) {
         List<Quiz> quizzes = new ArrayList<>();
 

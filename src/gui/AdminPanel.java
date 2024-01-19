@@ -2,6 +2,7 @@ package gui;
 
 import dao.AdminDAO;
 import dao.CourseDAO;
+import dao.QuizDAO;
 import dao.StudentDAO;
 import java.util.List;
 import javax.swing.*;
@@ -34,6 +35,8 @@ public class AdminPanel extends JPanel {
     private JButton updateProfile;
     private JLabel adminpanel;
     private JLabel selectedMenuLabel;
+    List<Quiz>quizzesList;
+    String selectedcourse="";
     InputValidator regex;
     SessionManager loggedInUser ; 
         Admin currentAdmin;
@@ -64,6 +67,7 @@ public class AdminPanel extends JPanel {
         manageAdmins = new JButton("Manage Admins");
         adminpanel = new JLabel("----ADMIN PANEL----");
         
+        quizzesList = new ArrayList<Quiz>();
         regex = new InputValidator();
         setBounds();
         styleComponents();
@@ -150,6 +154,8 @@ public class AdminPanel extends JPanel {
     {
         contentPanel.removeAll();
         contentPanel.repaint();
+        
+        
         selectedMenuLabel.setText("UPDATE  PROFILE");
         JLabel emailLabel = new JLabel("Email : ");
         JLabel passLabel = new JLabel("Passsword : ");
@@ -387,8 +393,12 @@ public class AdminPanel extends JPanel {
     public void manageQuizzes()
     {
         
+        
         contentPanel.removeAll();
         contentPanel.repaint();
+        
+        selectedMenuLabel.setBounds(480,20,200,45);
+        contentPanel.setBounds(menuButtonWidth+15,65,width-menuButtonWidth-45,800);
         selectedMenuLabel.setText("Manage Quizzes");
         JComboBox<String> coursesList;
         List<Course> availableCourses;
@@ -403,7 +413,8 @@ public class AdminPanel extends JPanel {
             i++;  
           }
         coursesList = new JComboBox<> (courseTitles);
-        List<Quiz> quizzeslist = new ArrayList<Quiz>();
+        
+        
         
         int x1=15,x2=160,x3=305,x4=450;
         int y1 = 85,y2=115;
@@ -413,44 +424,81 @@ public class AdminPanel extends JPanel {
         JLabel quizid_label = new JLabel("Quiz Id : ");
         JLabel quizTitle_label = new JLabel("Title : ");
         JLabel numberofquestions_label = new JLabel("Questions : ");
-       JLabel CourseidLabel = new JLabel("Course Id");
+        JLabel CourseidLabel = new JLabel("Course Id");
        
         JButton addQuizButton = new JButton("Add Quiz");
         
-        JTextField Quizid = new JTextField();
-        JTextField Quiztitle = new JTextField();
-        JTextField Courseid = new JTextField();
-        JTextField Questions = new JTextField();
+        JTextField Quizid_textField = new JTextField();
+      
+        JTextField Quiztitle_textField = new JTextField();
+        JTextField Courseid_textField = new JTextField();
+        Courseid_textField.setEditable(false);
+        JTextField Questions_textField = new JTextField();
         
+      coursesList.setSelectedItem(courseTitles[0]);
+       QuizDAO quizdao = new QuizDAO();
+        
+        
+        
+        coursesList.addActionListener(new ActionListener()
+        {
+         
+           public void actionPerformed(ActionEvent e)
+           {
+                selectedcourse = (String) coursesList.getSelectedItem();
+               Courseid_textField.setText( coursedao.getCourseByCourseTitle(selectedcourse).getCourseId());
+           }          
+        });
+       addQuizButton.addActionListener(new ActionListener(){
        
+           @Override
+           public void actionPerformed(ActionEvent e)
+           {
+                CourseDAO coursedao = new CourseDAO();
+               int quizId =  Integer.parseInt(Quizid_textField.getText());
+               String quizTitle = Quiztitle_textField.getText();
+               String courseId = Courseid_textField.getText();
+               int numberOfquestions = Integer.parseInt(Questions_textField.getText());   
+               
+               Quiz q = new Quiz(quizId,quizTitle,numberOfquestions,5);
+            //   String selectedCourseTitle = (String) coursesList.getSelectedItem();
+             //  String Courseid = coursedao.getCourseByCourseTitle(selectedCourse).getCourseId();
+               QuizDAO quizdao = new QuizDAO();
+                 quizdao.addQuiz(q, courseId);
+                  quizzesList =quizdao.getQuizzes(selectedcourse);
+                  
+                  
+           }
+
+       });
         coursesList.setBounds(200,25,150,30);
         selectCourseLabel.setBounds(70,25,100,30);
         addQuizLabel.setBounds(x1,55,width,30);
         
         quizid_label.setBounds(x1,y1,width,30);
-        Quizid.setBounds(x1,y2,width,30);
+        Quizid_textField.setBounds(x1,y2,width,30);
         quizTitle_label.setBounds(x3,y1,width,30);
-        Quiztitle.setBounds(x3,y2,width,30);
+        Quiztitle_textField.setBounds(x3,y2,width,30);
         numberofquestions_label.setBounds(x4,y1,width,30);
-        Questions.setBounds(x4,y2,width,30);
+        Questions_textField.setBounds(x4,y2,width,30);
         CourseidLabel.setBounds(x2,y1,width,30);
-        Courseid.setBounds(x2,y2,width,30);
+        Courseid_textField.setBounds(x2,y2,width,30);
         
-        addQuizButton.setBounds(300,y2+40,120,35);
+        addQuizButton.setBounds(220,y2+40,120,35);
         //addQuizLabel.setBounds(15,25,100,30);
         
         contentPanel.add(selectCourseLabel);
         contentPanel.add(coursesList);
-        contentPanel.add(addQuizLabel);
+     //   contentPanel.add(addQuizLabel);
         contentPanel.add(quizid_label);
-        contentPanel.add(Quizid);
+        contentPanel.add(Quizid_textField);
         contentPanel.add(quizTitle_label);
-        contentPanel.add( Quiztitle);
+        contentPanel.add( Quiztitle_textField);
         contentPanel.add(numberofquestions_label);
-        contentPanel.add(Questions);
-        contentPanel.add(Questions);
+        contentPanel.add(Questions_textField);
         contentPanel.add(CourseidLabel);
-        contentPanel.add(Courseid);
+        contentPanel.add(Courseid_textField);
+        contentPanel.add(addQuizButton);
         contentPanel.repaint();
         
     }
